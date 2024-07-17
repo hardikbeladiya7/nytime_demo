@@ -6,7 +6,6 @@ import useArticles from '../../Hooks/useArticles'
 const Home = () => {
 
     const [article, setArticle] = useState([]);
-    console.log("🚀 ~ Home ~ article:", article)
     const { getArticles } = useArticles();
 
     useEffect(() => {
@@ -25,7 +24,7 @@ const Home = () => {
         <div style={{ marginTop: '20px' }}>
             <Container>
                 {
-                    article.length && article.map((data) => (
+                    article.length ? article.map((data) => (
                         <Article
                             title={data.title}
                             subTitle={data.source}
@@ -34,7 +33,7 @@ const Home = () => {
                             img={data.media[0]}
                             url={data.url}
                         />
-                    ))
+                    )) : <></>
                 }
             </Container>
         </div>
